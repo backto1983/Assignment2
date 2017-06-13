@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-ca">
     <head>
         <meta charset="UTF-8">
         <title>Registering User</title>
@@ -8,6 +8,8 @@
     <?php
         $email = $_POST['email'];
         $username = $_POST['username'];
+        $birthday = strtotime($_POST["birthday"]);
+        $birthday = date('Y-m-d H:i:s', $birthday);
         $password = $_POST['password'];
         $confirm = $_POST['confirm'];
 
@@ -35,7 +37,7 @@
             include_once ('db.php');
             include ('db.php');
 
-            $sql = "INSERT INTO users VALUES (:email, :username, :password)";
+            $sql = "INSERT INTO users VALUES (:email, :username, :birthday, :password)";
 
             #Hash the password
             $password = password_hash($password, PASSWORD_DEFAULT);
@@ -43,6 +45,7 @@
             $cmd = $conn->prepare($sql);
             $cmd->bindParam(':email', $email, PDO::PARAM_STR, 120);
             $cmd->bindParam(':username', $username, PDO::PARAM_STR, 100);
+            $cmd->bindParam(':birthday', $birthday, PDO::PARAM_STR);
             $cmd->bindParam(':password', $password, PDO::PARAM_STR, 255);
 
             try {

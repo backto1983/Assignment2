@@ -19,6 +19,10 @@
         <input name="username" id="username" placeholder="your name"/>
     </fieldset>
     <fieldset class="form-group">
+        <label for="birthday" class="col-sm-2">Birthday:</label>
+        <input name="birthday" id="birthday" type="date" min="1900-01-01" placeholder="Birthday"/>
+    </fieldset>
+    <fieldset class="form-group">
         <label for="password" class="col-sm-2">Password: </label>
         <input name="password" id="password" type="password" placeholder="Password"/>
     </fieldset>
