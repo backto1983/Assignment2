@@ -1,3 +1,4 @@
+<!--Login validation; check if password match and, in case it does, initiate a session-->
 <?php
     $email = $_POST['email'];
     $password = $_POST['password'];

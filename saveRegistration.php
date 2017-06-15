@@ -27,7 +27,7 @@
             echo 'You must enter an email address <br />';
             $ok = false;
         }
-        #If the email and password are ok
+        #If the email and password are ok, insert information inserted in the form from "registration" in the "users" DB
         if ($ok) {
             require_once ('db.php');
             $sql = "INSERT INTO users (email, username, birthday, password) VALUES (:email, :username, :birthday, :password)";

@@ -9,6 +9,7 @@ if (!empty($_GET['errorMessage']))
 else
     echo '<div class="alert alert-info" id="message">Create your account</div>';
 ?>
+    <!--This form will post all the information inserted here to be validated in another php file, so it can be saved in the DB-->
     <form method="post" action="saveRegistration.php">
         <fieldset class="form-group">
             <label for="email" class="col-sm-2">Email: *</label>

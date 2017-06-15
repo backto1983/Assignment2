@@ -21,7 +21,7 @@
     <form method="post" action="saveEdit.php">
     <fieldset class="form-group">
         <label for="email" class="col-sm-1">Email: *</label>
-        <input name="email" id="email" type="email" required placeholder="email@email.com" value="<?php echo $email ?>"/>
+        <input name="email" id="email" type="email" required placeholder="email@email.com" value="<?php echo $email ?>"/> <!--Echo string function used to print the information stored in the DB in the form space-->
     </fieldset>
     <fieldset class="form-group">
         <label for="username" class="col-sm-1">User Name: </label>
@@ -31,7 +31,7 @@
         <label for="birthday" class="col-sm-1">Birthday: </label>
         <input name="birthday" id="birthday" type="date" min="1900-01-01" placeholder="Birthday" value="<?php echo $birthday ?>"/>
     </fieldset>
-    <input name="oldEmail" value="<?php echo $email ?> type="hidden">
+    <input name="oldEmail" id="oldEmail" value="<?php echo $email ?>" type="hidden"/>
     <button class="btn btn-success col-sm-offset-1">Save</button>
 <?php
     require_once ('footer.php');
