@@ -1,10 +1,8 @@
 <?php
     $pageTitle = 'Edit User';
     require_once ('header.php');
-
     if (!empty($_GET['email']))
         $email = $_GET['email'];
-
     if (!empty($email)) { //If email is not empty, connect to the DB located in AWS host; used to edit information
         require_once ('db.php');
         $sql = "SELECT * FROM users WHERE email = :email"; #Select all information inside "users" table
@@ -19,23 +17,22 @@
         $birthday = $users['birthday'];
     }
 ?>
-<h1>Edit User</h1>
+    <h1>Edit User</h1>
     <form method="post" action="saveEdit.php">
-        <fieldset class="form-group">
-            <label for="email" class="col-sm-1">Email: *</label>
-            <input name="email" id="email" type="email" required placeholder="email@email.com" value="<?php echo $email ?>"/>
-        </fieldset>
-        <fieldset class="form-group">
-            <label for="username" class="col-sm-1">User Name: </label>
-            <input name="username" id="username" placeholder="your name" value="<?php echo $username ?>"/>
-        </fieldset>
-        <fieldset class="form-group">
-            <label for="birthday" class="col-sm-1">Birthday: </label>
-            <input name="birthday" id="birthday" type="date" min="1900-01-01" placeholder="Birthday" value="<?php echo $birthday ?>"/>
-        </fieldset>
-        <button class="btn btn-success col-sm-offset-1">Edit</button>
+    <fieldset class="form-group">
+        <label for="email" class="col-sm-1">Email: *</label>
+        <input name="email" id="email" type="email" required placeholder="email@email.com" value="<?php echo $email ?>"/>
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="username" class="col-sm-1">User Name: </label>
+        <input name="username" id="username" placeholder="your name" value="<?php echo $username ?>"/>
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="birthday" class="col-sm-1">Birthday: </label>
+        <input name="birthday" id="birthday" type="date" min="1900-01-01" placeholder="Birthday" value="<?php echo $birthday ?>"/>
+    </fieldset>
+    <input name="oldEmail" value="<?php echo $email ?> type="hidden">
+    <button class="btn btn-success col-sm-offset-1">Save</button>
 <?php
     require_once ('footer.php');
 ?>
-
-
