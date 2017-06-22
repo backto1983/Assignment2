@@ -1,17 +1,25 @@
 <?php
-    #Get title from DB
+    $pageTitle = 'Pages List';
     require_once ('header.php');
 ?>
 <main class="container">
     <h1>List Of Pages</h1>
+    <p><a href="pageDetails.php">Add A New Page</a></p>
 <?php
-    $pageTitle = 'List Of Pages';
-    require_once ('db.php');
-    $sql = "SELECT * FROM pages"; #Select all information inside "users" table
-    $cmd = $conn->prepare($sql);
-    $cmd->execute();
-    $pages = $cmd->fetchAll(); #Fetchs all information contained in "users" table to create an array
-    $conn = null;
+    try {
+        $pageTitle = 'List Of Pages';
+        require_once ('db.php');
+        $sql = "SELECT * FROM pages"; #Select all information inside "users" table
+        $cmd = $conn->prepare($sql);
+        $cmd->execute();
+        $pages = $cmd->fetchAll(); #Fetchs all information contained in "users" table to create an array
+        $conn = null;
+    }
+    catch (exception $e) {
+        mail('200358165@student.georgianc.on.ca', 'Somebody Crashed Your Web Site', $e);
+        header('location:error.php');
+    }
+
     #Use of "echo" function to print a table on the web page
     echo '<table class="table table-striped table-hover"><tr> <!--Added classes to table tag to customize it-->
                       <th>Title</th> <!--Table headers for all information that can be inserted using the form-->

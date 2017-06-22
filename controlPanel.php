@@ -1,6 +1,6 @@
 <?php
-$pageTitle = 'Control Panel';
-require_once ('header.php'); //Create another nav navigation showing the links of the Control Panel
+    $pageTitle = 'Control Panel';
+    require_once ('nav.php'); //Create another nav navigation showing the links of the Control Panel
 ?>
 <main class="container" xmlns="http://www.w3.org/1999/html">
         <h1><a href="registeredUsers.php">Administrators</a></h1>

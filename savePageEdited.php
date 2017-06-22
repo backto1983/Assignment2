@@ -11,17 +11,23 @@
         $ok = true;
 
     if ($ok) {
-        require_once('db.php');
-        #sql statement used to update information edited in the DB
-        $sql = "UPDATE pages SET title = :title, content = :content WHERE pageID = :pageID";
-        $cmd = $conn->prepare($sql);
-        #Parameter binding to avoid sql injections
-        $cmd->bindParam(':title', $title, PDO::PARAM_STR, 40);
-        $cmd->bindParam(':content', $content, PDO::PARAM_STR, 10000);
+        try {
+            require_once('db.php');
+            #sql statement used to update information edited in the DB
+            $sql = "UPDATE pages SET title = :title, content = :content WHERE pageID = :pageID";
+            $cmd = $conn->prepare($sql);
+            #Parameter binding to avoid sql injections
+            $cmd->bindParam(':title', $title, PDO::PARAM_STR, 40);
+            $cmd->bindParam(':content', $content, PDO::PARAM_STR, 10000);
 
-        $cmd->execute();
-        $conn = null;
-        header('location:pagesList.php');
+            $cmd->execute();
+            $conn = null;
+            header('location:pagesList.php');
+        }
+        catch (exception $e) {
+            mail('200358165@student.georgianc.on.ca', 'Somebody Crashed Your Web Site', $e);
+            header('location:error.php');
+        }
     }
     ?>
     </body>

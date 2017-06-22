@@ -7,14 +7,20 @@
         </head>
         <body>
         <?php
-            #Require_once statement used to refer to a php file that connects to a server in order to avoid repeating lines of code
-            require_once('db.php');
-            $sql = "DELETE FROM users WHERE email = :email";
-            $cmd = $conn->prepare($sql);
-            $cmd->bindParam(':email', $_GET['email'], PDO::PARAM_STR, 120);
-            $cmd->execute();
-            $conn = null;
-            header('location:registeredUsers.php');
+            try {
+                #Require_once statement used to refer to a php file that connects to a server in order to avoid repeating lines of code
+                require_once('db.php');
+                $sql = "DELETE FROM users WHERE email = :email";
+                $cmd = $conn->prepare($sql);
+                $cmd->bindParam(':email', $_GET['email'], PDO::PARAM_STR, 120);
+                $cmd->execute();
+                $conn = null;
+                header('location:registeredUsers.php');
+            }
+            catch (exception $e) {
+                mail('200358165@student.georgianc.on.ca', 'Somebody Crashed Your Web Site', $e);
+                header('location:error.php');
+            }
         ?>
         </body>
     </html>

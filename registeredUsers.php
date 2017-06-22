@@ -5,12 +5,19 @@
     <h1>Registered Users</h1>
     <p><a href="registration.php">Register A New Admin</a></p>
 <?php
-    require_once ('db.php');
-    $sql = "SELECT * FROM users"; #Select all information inside "users" table
-    $cmd = $conn->prepare($sql);
-    $cmd->execute();
-    $users = $cmd->fetchAll(); #Fetchs all information contained in "users" table to create an array
-    $conn = null;
+    try {
+        require_once ('db.php');
+        $sql = "SELECT * FROM users"; #Select all information inside "users" table
+        $cmd = $conn->prepare($sql);
+        $cmd->execute();
+        $users = $cmd->fetchAll(); #Fetchs all information contained in "users" table to create an array
+        $conn = null;
+    }
+    catch (exception $e) {
+        mail('200358165@student.georgianc.on.ca', 'Somebody Crashed Your Web Site', $e);
+        header('location:error.php');
+    }
+
     #Use of "echo" function to print a table on the web page
     echo '<table class="table table-striped table-hover"><tr> <!--Added classes to table tag to customize it-->
                   <th>Email</th> <!--Table headers for all information that can be inserted using the form-->

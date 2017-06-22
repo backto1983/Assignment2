@@ -4,17 +4,23 @@
     if (!empty($_GET['pageID']))
         $pageID = $_GET['pageID'];
 
-    if (!empty($pageID)) { //If email is not empty, connect to the DB; used to edit information
-        require_once ('db.php');
-        $sql = "SELECT * FROM pages WHERE pageID = :pageID"; #Select all information inside "pages" table
-        $cmd = $conn->prepare($sql); #Protect the DB by preventing SQL injection attacks
-        $cmd->bindParam(':pageID', $pageID, PDO::PARAM_INT); #Binds a PHP variable ($pageID), with a corresponding named placeholder (pageID) in the SQL statement (line 9) that was used to prepare the statement
-        $cmd->execute();
-        $page = $cmd->fetch(); #Fetchs the next row from a result set associated with a PDO statement object
-        $conn = null; #Close the connection with the DB
-        #Populate the row with the information inserted in the form by associating PHP variables with SQL named placeholders
-        $title = $page['title'];
-        $content = $page['content'];
+    try {
+        if (!empty($pageID)) { //If email is not empty, connect to the DB; used to edit information
+            require_once ('db.php');
+            $sql = "SELECT * FROM pages WHERE pageID = :pageID"; #Select all information inside "pages" table
+            $cmd = $conn->prepare($sql); #Protect the DB by preventing SQL injection attacks
+            $cmd->bindParam(':pageID', $pageID, PDO::PARAM_INT); #Binds a PHP variable ($pageID), with a corresponding named placeholder (pageID) in the SQL statement (line 9) that was used to prepare the statement
+            $cmd->execute();
+            $page = $cmd->fetch(); #Fetchs the next row from a result set associated with a PDO statement object
+            $conn = null; #Close the connection with the DB
+            #Populate the row with the information inserted in the form by associating PHP variables with SQL named placeholders
+            $title = $page['title'];
+            $content = $page['content'];
+        }
+    }
+        catch (exception $e) {
+        mail('200358165@student.georgianc.on.ca', 'Somebody Crashed Your Web Site', $e);
+        header('location:error.php');
     }
 ?>
 <main class="container">

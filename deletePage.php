@@ -7,6 +7,7 @@
         </head>
             <body>
             <?php
+            try {
                 #Require_once statement used to refer to a php file that connects to a server in order to avoid repeating lines of code
                 require_once('db.php');
                 $sql = "DELETE FROM pages WHERE pageID = :pageID";
@@ -15,6 +16,11 @@
                 $cmd->execute();
                 $conn = null;
                 header('location:pagesList.php');
+            }
+            catch (exception $e) {
+                mail('200358165@student.georgianc.on.ca', 'Somebody Crashed Your Web Site', $e);
+                header('location:error.php');
+            }
             ?>
             </body>
     </html>
