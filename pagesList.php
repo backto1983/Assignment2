@@ -38,7 +38,7 @@
                   <td>'.$page['content'].'</td>';
         if (!empty($_SESSION['email'])) {
             #Buttons to edit and delete information about users; the delete button, after pressed, shows a confirmation dialog box
-            echo '<th><a href="editPage.php?pageID=' . $page['pageID'] . '" class="btn btn-xs btn-primary">Edit</a></th>
+            echo '<th><a href="pageDetails.php?pageID=' . $page['pageID'] . '" class="btn btn-xs btn-primary">Edit</a></th>
                   <td><a href="deletePage.php?pageID=' . $page['pageID'] . '" class="btn btn-xs btn-danger confirmation">Delete</a></td></tr>';
         }
         echo '</tr>';

@@ -28,6 +28,7 @@
         #Parameter binding to avoid sql injections
         $cmd->bindParam(':title', $title, PDO::PARAM_STR, 40);
         $cmd->bindParam(':content', $content, PDO::PARAM_STR, 10000);
+        $cmd->bindParam(':pageID',$pageID, PDO::PARAM_INT);
 
         if (!empty($pageID))
             $cmd->bindParam('pageID', $pageID, PDO::PARAM_INT);
