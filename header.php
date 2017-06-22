@@ -14,7 +14,7 @@
 
                         $headerLogo = null;
 
-                        $sql = "SELECT headerLogo FROM logo WHERE headerLogoID = :headerLogoID";
+                        $sql = "SELECT headerLogo FROM logo ORDER BY headerLogoID DESC LIMIT 1";
                         $cmd = $conn->prepare($sql);
                         $cmd->bindParam(':headerLogoID', $headerLogoID, PDO::PARAM_INT);
                         $cmd->execute();
@@ -25,7 +25,7 @@
                         header('location:error.php');
                     }
                 ?>
-                <li><img height="50" width="50" src="<?php echo $headerLogo['headerLogo'] ?>" id="headerLogo" title="Header Logo"></li>
+                <li><img height="60" width="60" src="<?php echo $headerLogo['headerLogo'] ?>" id="headerLogo" title="Header Logo"></li>
                 <li><a href="default.php" class="navbar-brand">Web Site Builder</a></li>
 
                 <?php

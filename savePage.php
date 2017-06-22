@@ -22,6 +22,8 @@
             $sql = "INSERT INTO pages (title, content) VALUES (:title, :content)";
         }
 
+        echo $sql;
+
         $cmd = $conn->prepare($sql);
         #Parameter binding to avoid sql injections
         $cmd->bindParam(':title', $title, PDO::PARAM_STR, 40);

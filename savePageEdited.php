@@ -13,7 +13,7 @@
     if ($ok) {
         try {
             require_once('db.php');
-            #sql statement used to update information edited in the DB
+            #SQL statement used to update information edited in the DB
             $sql = "UPDATE pages SET title = :title, content = :content WHERE pageID = :pageID";
             $cmd = $conn->prepare($sql);
             #Parameter binding to avoid sql injections
