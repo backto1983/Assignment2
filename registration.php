@@ -1,13 +1,13 @@
 <?php
-$pageTitle = 'Registration';
-require_once ('header.php');
+    $pageTitle = 'Registration';
+    require_once ('header.php');
 ?>
     <h1>User Registration</h1>
 <?php
-if (!empty($_GET['errorMessage']))
-    echo '<div class="alert alert-danger" id="message">Email address already exists</div>';
-else
-    echo '<div class="alert alert-info" id="message">Create your account</div>';
+    if (!empty($_GET['errorMessage']))
+        echo '<div class="alert alert-danger" id="message">Email address already exists</div>';
+    else
+        echo '<div class="alert alert-info" id="message">Create your account</div>';
 ?>
     <!--This form will post all the information inserted here to be validated in another php file, so it can be saved in the DB-->
     <form method="post" action="saveRegistration.php">

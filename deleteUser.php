@@ -14,13 +14,15 @@
                 $cmd = $conn->prepare($sql);
                 $cmd->bindParam(':email', $_GET['email'], PDO::PARAM_STR, 120);
                 $cmd->execute();
-                $conn = null;
-                header('location:registeredUsers.php');
             }
             catch (exception $e) {
                 mail('200358165@student.georgianc.on.ca', 'Somebody Crashed Your Web Site', $e);
                 header('location:error.php');
             }
+                $conn = null;
+                header('location:registeredUsers.php');
+
+
         ?>
         </body>
     </html>

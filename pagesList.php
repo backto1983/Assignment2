@@ -12,13 +12,14 @@
         $sql = "SELECT * FROM pages"; #Select all information inside "users" table
         $cmd = $conn->prepare($sql);
         $cmd->execute();
-        $pages = $cmd->fetchAll(); #Fetchs all information contained in "users" table to create an array
-        $conn = null;
     }
     catch (exception $e) {
         mail('200358165@student.georgianc.on.ca', 'Somebody Crashed Your Web Site', $e);
         header('location:error.php');
     }
+
+        $pages = $cmd->fetchAll(); #Fetchs all information contained in "users" table to create an array
+        $conn = null;
 
     #Use of "echo" function to print a table on the web page
     echo '<table class="table table-striped table-hover"><tr> <!--Added classes to table tag to customize it-->

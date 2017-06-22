@@ -8,7 +8,7 @@
             require_once ('db.php');
             $sql = "SELECT * FROM users WHERE email = :email"; #Select all information inside "users" table
             $cmd = $conn->prepare($sql); #Protect the DB by preventing SQL injection attacks
-            $cmd->bindParam(':email', $email, PDO::PARAM_STR); #Binds a PHP variable ($email), with a corresponding named placeholder (email) in the SQL statement (line 9) that was used to prepare the statement
+            $cmd->bindParam(':email', $email, PDO::PARAM_STR, 120); #Binds a PHP variable ($email), with a corresponding named placeholder (email) in the SQL statement (line 9) that was used to prepare the statement
             $cmd->execute();
             $users = $cmd->fetch(); #Fetchs the next row from a result set associated with a PDO statement object
             $conn = null; #Close the connection with the DB

@@ -13,11 +13,17 @@ require_once ('header.php');
     $headerLogo = null;
 
     require_once('db.php');
+    try {
+        $sql = "SELECT headerLogo FROM logo ORDER BY headerLogoID DESC LIMIT 1";
+        $cmd = $conn->prepare($sql);
+        $cmd->bindParam(':headerLogoID', $headerLogoID, PDO::PARAM_INT);
+        $cmd->execute();
+    }
+    catch (exception $e) {
+        mail('200358165@student.georgianc.on.ca', 'Somebody Crashed Your Web Site', $e);
+        header('location:error.php');
+    }
 
-    $sql = "SELECT headerLogo FROM logo ORDER BY headerLogoID DESC LIMIT 1";
-    $cmd = $conn->prepare($sql);
-    $cmd->bindParam(':headerLogoID', $headerLogoID, PDO::PARAM_INT);
-    $cmd->execute();
     $headerLogo = $cmd->fetch();
 
 ?>

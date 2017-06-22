@@ -12,8 +12,7 @@
         $headerLogoFileTmpLocation = $_FILES['headerLogo']['tmp_name'];
 
         //check if the $fileName is null, but there is an entry in the DB
-        if (!empty($headerLogoID) && empty($headerLogoFileName))
-        {
+        if (!empty($headerLogoID) && empty($headerLogoFileName)) {
             require ('db.php');
             $sql = "SELECT headerLogo FROM logo WHERE headerLogoID = :headerLogoID";
             $cmd = $conn->prepare($sql);
