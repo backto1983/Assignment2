@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
     <!DOCTYPE html>
-        <html lang="en-ca">
+    <html lang="en-ca">
         <head>
             <meta charset="UTF-8">
             <title>Delete A User</title>
@@ -11,7 +11,7 @@
             require_once('db.php');
             $sql = "DELETE FROM users WHERE email = :email";
             $cmd = $conn->prepare($sql);
-            $cmd->bindParam(':email', $_GET['email'], PDO::PARAM_STR);
+            $cmd->bindParam(':email', $_GET['email'], PDO::PARAM_STR, 120);
             $cmd->execute();
             $conn = null;
             header('location:registeredUsers.php');

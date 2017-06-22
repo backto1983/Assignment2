@@ -3,6 +3,7 @@
     require_once ('header.php');
 ?>
     <h1>Registered Users</h1>
+    <p><a href="registration.php">Register A New Admin</a></p>
 <?php
     require_once ('db.php');
     $sql = "SELECT * FROM users"; #Select all information inside "users" table
