@@ -15,9 +15,9 @@
                 $cmd->bindParam(':pageID', $_GET['pageID'], PDO::PARAM_INT);
                 $cmd->execute();
                 $conn = null;
-                header('location:pagesList.php');
+                header('location:pagesList.php'); #"Header" is a network function which redirects the user to another address directly
             }
-            catch (exception $e) {
+            catch (exception $e) { #In case there is a problem with the SQL command, catch the exception and send an email to inform about the problem
                 mail('200358165@student.georgianc.on.ca', 'Somebody Crashed Your Web Site', $e);
                 header('location:error.php');
             }

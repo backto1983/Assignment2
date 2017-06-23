@@ -14,7 +14,7 @@ require_once ('header.php');
 
     require_once('db.php');
     try {
-        $sql = "SELECT headerLogo FROM logo ORDER BY headerLogoID DESC LIMIT 1";
+        $sql = "SELECT headerLogo FROM logo ORDER BY headerLogoID DESC LIMIT 1"; #Connect to the DB to get a 'headerLogoID'
         $cmd = $conn->prepare($sql);
         $cmd->bindParam(':headerLogoID', $headerLogoID, PDO::PARAM_INT);
         $cmd->execute();
@@ -35,7 +35,6 @@ require_once ('header.php');
     <input name="headerLogoID" id="headerLogoID" value="<?php echo $headerLogoID?>" type="hidden"/>
     <button class="btn btn-success col-sm-offset-1">Save</button>
 </form>
-<img height="300" width="300" src="<?php echo $headerLogo['headerLogo'] ?>" id="headerLogo" title="Header Logo">
 <?php
 require_once ('footer.php');
 ?>

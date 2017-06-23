@@ -23,7 +23,7 @@
             $cmd->bindParam(':username', $username, PDO::PARAM_STR, 100);
             $cmd->bindParam(':birthday', $birthday, PDO::PARAM_STR);
 
-            try { #Try/catch block to deal with possible duplicate entries
+            try { #Try/catch block to deal with possible duplicate email entries
                 $cmd->execute();
             }
                 catch (Exception $e) {

@@ -9,7 +9,7 @@
     else
         echo '<div class="alert alert-info" id="message">Log into your account</div>';
 ?>
-    <!--This form will post all the information inserted here to be validated in another in another php file-->
+    <!--This form will post all the information inserted here to be validated in another php file-->
     <form method="post" action="validate.php">
     <fieldset class="form-group">
         <label for="email" class="col-sm-1">Email:</label>

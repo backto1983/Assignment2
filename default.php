@@ -1,19 +1,18 @@
 <?php
     $pageTitle = 'Home';
-    #Require_once statement used to refer to a php file containing all the header information in order to avoid repeating lines of code
     require_once ('header.php');
 
-    $pageID = $_GET['pageID'];
+    $pageID = $_GET['pageID']; #$_GET to get passed variables contained in an array
     require('db.php');
 
-    $sql = "SELECT * FROM pages WHERE pageID = :pageID";
+    $sql = "SELECT * FROM pages WHERE pageID = :pageID"; #SQL command to select all information contained in the "pages" DB
     $cmd = $conn->prepare($sql);
-    $cmd->bindParam(':pageID', $pageID, PDO::PARAM_INT);
+    $cmd->bindParam(':pageID', $pageID, PDO::PARAM_INT); #Binding parameters to avoid SQL injections
     $cmd->execute();
-    $pages = $cmd->fetch();
+    $pages = $cmd->fetch(); #Fetch information from a table (a row)...
 
-    echo '<h1 class="text-center">'.$pages['title'].'</h1><br />';
-    echo '<p>'.$pages['content'].'</p>';
+    echo '<h1 class="text-center">'.$pages['title'].'</h1><br />'; #to print to the screen
+    echo '<p class="text-justify">'.$pages['content'].'</p>';
 
 require_once ('footer.php');
 ?>

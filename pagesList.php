@@ -9,7 +9,7 @@
     try {
         $pageTitle = 'List Of Pages';
         require_once ('db.php');
-        $sql = "SELECT * FROM pages"; #Select all information inside "users" table
+        $sql = "SELECT * FROM pages"; #Select all information inside "pages" table
         $cmd = $conn->prepare($sql);
         $cmd->execute();
     }
@@ -18,7 +18,7 @@
         header('location:error.php');
     }
 
-        $pages = $cmd->fetchAll(); #Fetchs all information contained in "users" table to create an array
+        $pages = $cmd->fetchAll(); #Fetchs all information contained in "pages" table to create an array
         $conn = null;
 
     #Use of "echo" function to print a table on the web page
@@ -37,7 +37,7 @@
         echo '<tr><td>'.$page['title'].'</td> 
                   <td>'.$page['content'].'</td>';
         if (!empty($_SESSION['email'])) {
-            #Buttons to edit and delete information about users; the delete button, after pressed, shows a confirmation dialog box
+            #Buttons to edit and delete information; the delete button, after pressed, shows a confirmation dialog box
             echo '<th><a href="pageDetails.php?pageID=' . $page['pageID'] . '" class="btn btn-xs btn-primary">Edit</a></th>
                   <td><a href="deletePage.php?pageID=' . $page['pageID'] . '" class="btn btn-xs btn-danger confirmation">Delete</a></td></tr>';
         }

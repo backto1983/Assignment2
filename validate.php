@@ -21,7 +21,7 @@
         session_start();
         $_SESSION['email']  = $user['email'];
         $_SESSION['username'] = $user['username'];
-        header('location:registeredUsers.php');
+        header('location:controlPanel.php');
     }
     else { #User was not found or did not have a valid password
         header('location:login.php?invalid=true');

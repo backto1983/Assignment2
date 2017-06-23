@@ -36,7 +36,7 @@
                           <td>'.$user['username'].'</td>
                           <td>'.$user['birthday'].'</td>';
         if (!empty($_SESSION['email'])) {
-            #Buttons to edit and delete information about users; the delete button, after pressed, shows a confirmation dialog box
+            #Buttons to edit and delete information; the delete button, after pressed, shows a confirmation dialog box
             echo '<th><a href="editUser.php?email=' . $user['email'] . '" class="btn btn-xs btn-primary">Edit</a></th>
                           <td><a href="deleteUser.php?email=' . $user['email'] . '" class="btn btn-xs btn-danger confirmation">Delete</a></td></tr>';
         }

@@ -13,7 +13,7 @@
     $title = null;
     $content = null;
 
-    #If the pageID exists, it is an edit situation and we need to load the page from the DB
+    #If the pageID exists, means the page is being edited
     if (!empty($pageID)) {
 
         require_once('db.php');
